@@ -11,7 +11,7 @@ const minutesData = document.querySelector('[data-minutes]');
 const secondsData = document.querySelector('[data-seconds]');
 
 let userSelectedDate;
-let conInterval;
+let conInterval; // Определение conInterval в глобальной области видимости
 
 const options = {
   enableTime: true,
@@ -20,7 +20,8 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     userSelectedDate = selectedDates[0];
-    if (userSelectedDate < Date.now()) {
+    if (userSelectedDate <= Date.now()) {
+      // Изменено условие на <=
       iziToast.error({
         message: 'Please choose a date in the future',
         position: 'topRight',
